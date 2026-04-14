@@ -1,0 +1,68 @@
+/// <reference path="./node-shim.d.ts" />
+import assert from 'assert';
+import { M0_EVAL_FIXTURES } from '../../dist/skills/__eval__/m0-fixtures.js';
+
+const tests = [
+  {
+    name: 'Fixture set contains the full Milestone 0 seed list',
+    run: () => {
+      assert.strictEqual(M0_EVAL_FIXTURES.length, 11);
+      assert.deepStrictEqual(
+        M0_EVAL_FIXTURES.map((fixture) => fixture.id),
+        ['RF-1', 'RF-2', 'RF-3', 'DB-1', 'DB-2', 'EF-1', 'EF-2', 'EF-3', 'EF-4', 'EF-5', 'EF-6'],
+      );
+    },
+  },
+  {
+    name: 'Fixture type coverage matches routing, delegation, and edge-case expectations',
+    run: () => {
+      const counts = M0_EVAL_FIXTURES.reduce<Record<string, number>>((acc, fixture) => {
+        acc[fixture.type] = (acc[fixture.type] ?? 0) + 1;
+        return acc;
+      }, {});
+
+      assert.deepStrictEqual(counts, {
+        routing: 3,
+        delegation_boundary: 2,
+        edge_case: 6,
+      });
+    },
+  },
+  {
+    name: 'Every fixture includes routing guardrails and anti-pattern guidance',
+    run: () => {
+      for (const fixture of M0_EVAL_FIXTURES) {
+        assert.ok(fixture.expected_skill.length > 0);
+        assert.ok(fixture.not_skills.length > 0);
+        assert.ok(fixture.expected_behavior.length > 0);
+        assert.ok(fixture.anti_pattern.length > 0);
+      }
+    },
+  },
+];
+
+async function runTests() {
+  let passed = 0;
+  let failed = 0;
+
+  for (let index = 0; index < tests.length; index += 1) {
+    const test = tests[index];
+    try {
+      await test.run();
+      passed += 1;
+      console.log(`PASS ${index + 1}: ${test.name}`);
+    } catch (error) {
+      failed += 1;
+      console.error(`FAIL ${index + 1}: ${test.name}`);
+      console.error(error);
+    }
+  }
+
+  console.log(`Results: ${passed} passed, ${failed} failed`);
+  process.exit(failed === 0 ? 0 : 1);
+}
+
+runTests().catch((error) => {
+  console.error('Test suite error:', error);
+  process.exit(1);
+});

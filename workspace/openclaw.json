@@ -1,0 +1,26 @@
+{
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "agents": {
+    "defaults": {
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      },
+      "compaction": {
+        "mode": "safeguard"
+      }
+    }
+  },
+  "gateway": {
+    "auth": {
+      "mode": "token",
+      "token": "ea96da139c9e44e8d4d214b5681bee9f8d8a74188503bab9"
+    }
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.4.2",
+    "lastTouchedAt": "2026-04-14T09:51:23.954Z"
+  }
+}

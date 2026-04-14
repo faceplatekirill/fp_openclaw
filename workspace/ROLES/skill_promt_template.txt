@@ -1,0 +1,12 @@
+Read workspace/ROLES/skills_architect_role.md. This is your role for the task:
+----------------------------------------
+read workspace/IMPLEMENTATION/SKILLS_LAYER1/skills_plan.md
+the task is to create a task package for milestone 2. 
+For live tests against prodcution system you and developer should use:
+workspace/ROLES/OPENCLAW-RUNTIME-VERIFICATION.md
+The prompts for live agent should be built using the knowledge base under workspace/PROJECT_KB
+
+Use:
+https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
+
+The practice showed that for skills pseudocode sometimes works better that text instructions

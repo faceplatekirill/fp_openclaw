@@ -1,0 +1,27 @@
+{
+  "id": "ecomet-connector",
+  "name": "Ecomet Connector",
+  "description": "Connects to Ecomet via WebSocket and provides a check command.",
+  "version": "0.1.0",
+  "entry": "./index.js",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "hosts": { "type": "array", "default": ["172.18.0.1:9000"] },
+      "protocol": { "type": "string", "default": "ws:" },
+      "login": { "type": "string", "default": "ai_assistant" },
+      "password": { "type": "string", "default": "ai_assistant" },
+      "timeoutMs": { "type": "number", "default": 5000 },
+      "reconnectDelayMs": { "type": "number", "default": 1000 }
+    }
+  },
+  "uiHints": {
+    "hosts": { "label": "Hosts" },
+    "protocol": { "label": "Protocol", "placeholder": "ws:" },
+    "login": { "label": "Login" },
+    "password": { "label": "Password", "sensitive": true },
+    "timeoutMs": { "label": "Timeout (ms)" },
+    "reconnectDelayMs": { "label": "Reconnect Delay (ms)" }
+  }
+}

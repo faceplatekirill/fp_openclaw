@@ -1,0 +1,195 @@
+{
+  "nodes": [
+    {
+      "prototype": "terminal",
+      "state_field": "state_graph",
+      "source": {
+        "_field": "state"
+      }
+    },
+    {
+      "prototype": "bus terminal",
+      "state_field": "state_graph",
+      "source": {
+        "_path": "U",
+        "_proto": "telemetry",
+        "_field": "state_graph_in"
+      }
+    },
+    {
+      "prototype": "line terminal",
+      "state_field": "state_graph",
+      "source": {
+        "_path": "U",
+        "_proto": "telemetry",
+        "_field": "state_graph_in"
+      },
+      "external_source": {
+        "_path": "external_state",
+        "_proto": "state",
+        "_field": "in_value"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "prototype": "reactor",
+      "wiring": [
+        {
+          "poles": ["pole_i"]
+        }
+      ]
+    },
+    {
+    "prototype":"coupled reactor",
+    "wiring": [
+      {
+        "poles": ["pole_i", "pole_j"]
+      },
+      {
+        "poles": ["pole_i", "pole_k"]
+      }
+    ]
+    },
+    {
+    "prototype":"current_limit_reactor",
+    "wiring": [
+      {
+        "poles": ["pole_i", "pole_j"]
+      }
+    ]
+    },
+    {
+      "prototype": "earth_isolator",
+      "wiring": [
+        {
+          "poles": ["pole_i", "_earth"],
+          "position": {
+            "_field": "state_graph_in"
+
+          }
+        }
+      ]
+    },
+    {
+      "prototype": "generator",
+      "wiring": [
+        {
+          "poles": ["pole_i", "_energy"],
+          "position": {
+            "_path": "state",
+            "_proto": "state",
+            "_field": "out_value"
+          }
+        }
+      ]
+    },
+    {
+      "prototype": "load",
+      "wiring": [
+        {
+          "poles": ["pole_i"]
+        }
+      ]
+    },
+    {
+      "prototype": "external_grid",
+      "wiring": [
+        {
+          "poles": ["pole_i"]
+        }
+      ]
+    },
+    {
+      "prototype": "line",
+      "wiring": [
+        {
+          "poles": ["pole_i", "pole_j"]
+        }
+      ]
+    },
+    {
+      "prototype": "circuit_breaker",
+      "wiring": [
+        {
+          "poles": ["pole_i", "pole_j"],
+          "position": {
+            "_path": "state",
+            "_proto": "state",
+            "_field": "out_value"
+          }
+        }
+      ]
+    },
+    {
+      "prototype": "isolator",
+      "wiring": [
+        {
+          "poles": ["pole_i", "pole_j"],
+          "position": {
+            "_path":  "state",
+            "_proto": "state",
+            "_field":  "out_value"
+          }
+        }
+      ]
+    },
+    {
+      "prototype":"auto-transformer-3w3t",
+      "wiring": [
+        {
+          "poles":  ["pole_i", "pole_j"]
+        },
+        {
+          "poles":  ["pole_i", "pole_k"]
+        }
+      ]
+    },
+    {
+    "prototype":"transformer-3w3t",
+    "wiring": [
+      {
+        "poles": ["pole_i", "pole_j"]
+      },
+      {
+        "poles": ["pole_i", "pole_k"]
+      }
+    ]
+    },
+    {
+      "prototype":"auto-transformer-2w2t",
+      "wiring": [
+        {
+          "poles":  ["pole_i", "pole_j"]
+        }
+      ]
+    },
+    {
+    "prototype":"transformer-2w2t",
+    "wiring": [
+      {
+        "poles": ["pole_i", "pole_j"]
+      }
+    ]
+    },
+    {
+    "prototype":"single winding transformer",
+    "wiring": [
+      {
+        "poles": ["pole_i", "pole_j"]
+      }
+    ]
+    },
+    {
+      "prototype":"voltage transformer",
+      "wiring": [
+        {
+          "poles": ["pole_i"]
+        }
+      ]
+
+    }]
+}
+
+
+

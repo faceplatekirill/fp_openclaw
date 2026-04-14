@@ -1,0 +1,5 @@
+Read workspace/ROLES/architect_role.md. This is your role for the task:
+* read workspace/IMPLEMENTATION/LAYER1-VISION.md
+* read workspace/IMPLEMENTATION/ECOMET-CONNECTION-ARCHITECTURE.md
+* use the knowledge base in workspace/KNOWLEDGE_BASE/CORE (and the other sources if needed)
+Prepare the task for Tool 10: `alarm_query`. Only tool 10, no other tools or skills

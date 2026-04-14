@@ -1,0 +1,3 @@
+# Compiled JavaScript (generated from TypeScript)
+*.js
+!openclaw.plugin.json
